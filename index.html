@@ -123,8 +123,22 @@ border-radius:15px;
 
 <div class="hero" id="welcome">
 <h1>🌸 Lumilis 🌸</h1>
-<p>Hay personas que llegan sin avisar... y terminan convirtiéndose en el lugar donde uno quiere quedarse.</p>
-<button class="btn" onclick="enterGarden()">Entrar al jardín ❤️</button>
+
+<p style="max-width:700px; line-height:1.8;">
+Hay personas que llegan sin avisar...
+<br><br>
+y terminan convirtiéndose
+<br>
+en el lugar donde uno quiere quedarse.
+</p>
+
+<p style="font-size:0.95rem; opacity:0.85; margin-top:15px;">
+Un pequeño rincón creado para vos ❤️
+</p>
+
+<button class="btn" onclick="enterGarden()">
+Entrar al jardín 🌸
+</button>
 </div>
 
 <div id="main">
@@ -189,16 +203,28 @@ Te amo con el alma mi pequeña ❤️
 <div id="secretMsg">Te amo ❤️</div>
 
 <audio id="music" loop>
-<source src="musica/Voyagers.mp3" type="audio/mpeg">
+<source src="music/Voyagers.mp3" type="audio/mpeg">
 </audio>
 
 </div>
 
 <script>
 function enterGarden(){
+
+document.body.style.transition = "1.5s";
+document.body.style.opacity = "0";
+
+setTimeout(() => {
+
 document.getElementById('welcome').style.display='none';
 document.getElementById('main').style.display='block';
+
+document.body.style.opacity = "1";
+
 document.getElementById('music').play().catch(()=>{});
+
+},1200);
+
 }
 
 const startDate = new Date('2026-04-14T00:00:00');
