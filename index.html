@@ -3,176 +3,254 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lumilis ❤️</title>
+<title>El Jardín de Lumilis</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{
-font-family:Arial,sans-serif;
+font-family:'Trebuchet MS',sans-serif;
+background:url('fondos/sakura.jpg') center center/cover fixed;
 color:white;
-background:url('fondos/sakura.jpg') center/cover fixed;
-min-height:100vh;
+overflow-x:hidden;
 }
 .overlay{
-background:rgba(255,105,180,.35);
+background:rgba(30,0,20,.45);
 min-height:100vh;
-padding:20px;
-text-align:center;
-backdrop-filter:blur(2px);
 }
-h1{font-size:4rem;margin-top:40px;text-shadow:2px 2px 8px #000}
-.subtitle{font-size:1.2rem;margin:10px 0 25px}
-button{
-padding:12px 25px;
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+h1{
+font-size:4rem;
+text-shadow:0 0 15px rgba(255,255,255,.7);
+}
+.hero p{max-width:700px;font-size:1.3rem;margin:20px 0}
+.btn{
+background:#ff6bb5;
 border:none;
-border-radius:30px;
-background:#ff69b4;
-color:white;
-font-size:1rem;
+padding:15px 30px;
+border-radius:40px;
+font-size:1.1rem;
 cursor:pointer;
+color:white;
+}
+.section{
+max-width:1100px;
+margin:auto;
+padding:60px 20px;
+text-align:center;
+}
+.card{
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(6px);
+padding:25px;
+border-radius:20px;
+margin:20px 0;
 }
 #main{display:none}
-.card{
-background:rgba(255,255,255,.15);
-padding:20px;
-margin:20px auto;
-max-width:900px;
-border-radius:20px;
-backdrop-filter:blur(5px);
+#contador{font-size:1.4rem;line-height:2}
+.polaroids{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:25px;
+margin-top:30px;
 }
-#contador{font-size:1.4rem}
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:10px;
+.polaroid{
+background:white;
+padding:10px 10px 35px 10px;
+border-radius:4px;
+box-shadow:0 10px 25px rgba(0,0,0,.4);
+transition:.4s;
 }
-.gallery img{
-width:100%;
-height:220px;
+.polaroid:hover{
+transform:scale(1.08) rotate(0deg)!important;
+}
+.polaroid img{
+width:220px;
+height:280px;
 object-fit:cover;
-border-radius:15px;
+display:block;
 }
-#cartaContenido{display:none;text-align:left;white-space:pre-wrap}
-.petalo{
+.envelope{
+font-size:90px;
+margin:20px;
+}
+#carta{
+display:none;
+text-align:left;
+white-space:pre-wrap;
+}
+.petal{
 position:fixed;
-top:-20px;
-font-size:20px;
-animation:caer linear forwards;
+top:-30px;
+pointer-events:none;
+animation:fall linear forwards;
 }
-@keyframes caer{
-to{transform:translateY(110vh) rotate(360deg);opacity:.3}
+@keyframes fall{
+to{
+transform:translateY(110vh) translateX(100px) rotate(360deg);
+opacity:.2;
+}
+}
+#loveSecret{
+position:fixed;
+bottom:15px;
+right:15px;
+opacity:.05;
+font-size:28px;
+cursor:pointer;
+}
+#secretMsg{
+display:none;
+position:fixed;
+top:20px;
+right:20px;
+background:#ff6bb5;
+padding:15px;
+border-radius:15px;
 }
 </style>
 </head>
 <body>
+
 <div class="overlay">
 
-<div id="inicio">
+<div class="hero" id="welcome">
 <h1>🌸 Lumilis 🌸</h1>
-<p class="subtitle">Un pequeño rincón creado especialmente para vos ❤️</p>
-<button onclick="entrar()">Entrar</button>
+<p>Hay personas que aparecen en tu vida... y terminan convirtiéndose en parte de ella.</p>
+<button class="btn" onclick="enterGarden()">Entrar al jardín ❤️</button>
 </div>
 
 <div id="main">
-<h1>🌸 Lumilis 🌸</h1>
 
+<section class="section">
+<h1>El Jardín de Lumilis 🌸</h1>
 <div class="card">
 <h2>Desde el 14 de abril de 2026 ❤️</h2>
-<p id="contador"></p>
+<div id="contador"></div>
 </div>
+</section>
 
-<div class="card">
-<h2>Nuestros recuerdos 📷</h2>
-<div class="gallery">
-<img src="imagenes/foto1.jpeg">
-<img src="imagenes/foto2.jpeg">
-<img src="imagenes/foto3.jpeg">
-<img src="imagenes/foto4.jpeg">
-<img src="imagenes/foto5.jpeg">
-<img src="imagenes/foto6.jpeg">
-<img src="imagenes/foto7.jpeg">
-<img src="imagenes/foto8.jpeg">
+<section class="section">
+<h2>📷 Nuestros recuerdos</h2>
+<div class="polaroids">
+<div class="polaroid" style="transform:rotate(-8deg)"><img src="imagenes/foto1.jpeg"></div>
+<div class="polaroid" style="transform:rotate(6deg)"><img src="imagenes/foto2.jpeg"></div>
+<div class="polaroid" style="transform:rotate(-4deg)"><img src="imagenes/foto3.jpeg"></div>
+<div class="polaroid" style="transform:rotate(10deg)"><img src="imagenes/foto4.jpeg"></div>
+<div class="polaroid" style="transform:rotate(-10deg)"><img src="imagenes/foto5.jpeg"></div>
+<div class="polaroid" style="transform:rotate(5deg)"><img src="imagenes/foto6.jpeg"></div>
+<div class="polaroid" style="transform:rotate(-7deg)"><img src="imagenes/foto7.jpeg"></div>
+<div class="polaroid" style="transform:rotate(8deg)"><img src="imagenes/foto8.jpeg"></div>
 </div>
-</div>
+</section>
 
+<section class="section">
 <div class="card">
 <h2>💌 Carta especial</h2>
+<div class="envelope">📩</div>
 <p id="estadoCarta"></p>
-<button id="btnCarta" onclick="abrirCarta()" disabled>Ver carta</button>
-<div id="cartaContenido">
+<button class="btn" id="abrirBtn" onclick="abrirCarta()" disabled>Abrir carta</button>
+<div id="carta">
 
 Ludmila:
 
-(Este espacio queda reservado para la carta que Federico va a escribir especialmente para vos ❤️)
+Este espacio está reservado para una carta que será desbloqueada el 22 de junio de 2026 ❤️
 
 </div>
 </div>
+</section>
+
+<section class="section">
+<div class="card">
+<h2>✨ Gracias por formar parte de mi historia ✨</h2>
+<p>- Federico ❤️</p>
+</div>
+</section>
 
 </div>
 
-<audio id="musica" loop>
+<div id="loveSecret">❤️</div>
+<div id="secretMsg">Te amo ❤️</div>
+
+<audio id="music" loop>
 <source src="musica/Voyagers.mp3" type="audio/mpeg">
 </audio>
 
 </div>
 
 <script>
-function entrar(){
-document.getElementById('inicio').style.display='none';
+function enterGarden(){
+document.getElementById('welcome').style.display='none';
 document.getElementById('main').style.display='block';
-document.getElementById('musica').play().catch(()=>{});
+document.getElementById('music').play().catch(()=>{});
 }
 
-const inicioRelacion=new Date("2026-04-14T00:00:00");
+const startDate = new Date('2026-04-14T00:00:00');
 
-function actualizarContador(){
-const ahora=new Date();
-const diff=ahora-inicioRelacion;
+function updateCounter(){
+const now=new Date();
+const diff=now-startDate;
 
-const dias=Math.floor(diff/(1000*60*60*24));
-const horas=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-const minutos=Math.floor((diff%(1000*60*60))/(1000*60));
-const segundos=Math.floor((diff%(1000*60))/1000);
+const d=Math.floor(diff/86400000);
+const h=Math.floor((diff%86400000)/3600000);
+const m=Math.floor((diff%3600000)/60000);
+const s=Math.floor((diff%60000)/1000);
 
-document.getElementById("contador").innerHTML=
-`${dias} días, ${horas} horas, ${minutos} minutos y ${segundos} segundos`;
+document.getElementById('contador').innerHTML=
+`❤️ ${d} días<br>🌸 ${h} horas<br>💌 ${m} minutos<br>✨ ${s} segundos`;
 }
-setInterval(actualizarContador,1000);
-actualizarContador();
+setInterval(updateCounter,1000);
+updateCounter();
 
-const desbloqueo=new Date("2026-06-22T00:00:00");
+const unlockDate = new Date('2026-06-22T00:00:00');
 
-function actualizarCarta(){
-const ahora=new Date();
-const estado=document.getElementById("estadoCarta");
-const boton=document.getElementById("btnCarta");
+function updateLetter(){
+const now=new Date();
+const btn=document.getElementById('abrirBtn');
+const txt=document.getElementById('estadoCarta');
 
-if(ahora>=desbloqueo){
-estado.innerHTML="La carta ya puede abrirse ❤️";
-boton.disabled=false;
+if(now>=unlockDate){
+txt.innerHTML='La carta ya puede abrirse ❤️';
+btn.disabled=false;
 }else{
-const diff=desbloqueo-ahora;
-const dias=Math.floor(diff/(1000*60*60*24));
-const horas=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-estado.innerHTML=`La carta se abrirá el 22/06/2026. Faltan ${dias} días y ${horas} horas ❤️`;
+const diff=unlockDate-now;
+const d=Math.floor(diff/86400000);
+const h=Math.floor((diff%86400000)/3600000);
+const m=Math.floor((diff%3600000)/60000);
+txt.innerHTML=`🔒 Disponible el 22/06/2026<br>Faltan ${d} días, ${h} horas y ${m} minutos`;
 }
 }
-setInterval(actualizarCarta,1000);
-actualizarCarta();
+setInterval(updateLetter,1000);
+updateLetter();
 
 function abrirCarta(){
-document.getElementById("cartaContenido").style.display="block";
+document.getElementById('carta').style.display='block';
 }
 
-function petalo(){
-const p=document.createElement("div");
-p.className="petalo";
-p.innerHTML="🌸";
-p.style.left=Math.random()*100+"vw";
-p.style.animationDuration=(5+Math.random()*6)+"s";
+function createPetal(){
+const p=document.createElement('div');
+p.className='petal';
+p.innerHTML='🌸';
+p.style.left=Math.random()*100+'vw';
+p.style.fontSize=(15+Math.random()*20)+'px';
+p.style.animationDuration=(6+Math.random()*8)+'s';
 document.body.appendChild(p);
-setTimeout(()=>p.remove(),12000);
+setTimeout(()=>p.remove(),15000);
 }
-setInterval(petalo,500);
+setInterval(createPetal,350);
+
+document.getElementById('loveSecret').onclick=()=>{
+const m=document.getElementById('secretMsg');
+m.style.display='block';
+setTimeout(()=>m.style.display='none',3000);
+};
 </script>
 </body>
 </html>
